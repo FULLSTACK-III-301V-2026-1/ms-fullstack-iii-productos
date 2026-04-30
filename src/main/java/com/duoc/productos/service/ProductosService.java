@@ -1,35 +1,36 @@
 package com.duoc.productos.service;
 
-import java.util.List;
-
+import com.duoc.productos.model.Productos;
+import com.duoc.productos.repository.ProductoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.duoc.productos.model.Productos;
-import com.duoc.productos.repository.ProductoRepository;
+import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ProductosService {
+
     @Autowired
+    private ProductoRepository productosRepository;
 
-    private ProductoRepository productoRepository;
-
-    // Obtener todos los productos
     public List<Productos> obtenerTodos() {
-        return productoRepository.findAll();
+        return productosRepository.findAll();
     }
 
-    // Crear nuevo producto
-    public Productos crearProducto(Productos producto) {
-        return productoRepository.save(producto);
+    public Optional<Productos> obtenerPorId(Integer id) {
+        return productosRepository.findById(id);
     }
 
-    // Eliminar producto
-    public boolean eliminarProducto(Long id) {
-        if (productoRepository.existsById(id)) {
-            productoRepository.deleteById(id);
-            return true;
-        }
-        return false;
+    public Productos guardar(Productos producto) {
+        return productosRepository.save(producto);
+    }
+
+    public void eliminar(Integer id) {
+        productosRepository.deleteById(id);
+    }
+
+    public boolean existePorId(Integer id) {
+        return productosRepository.existsById(id);
     }
 }
