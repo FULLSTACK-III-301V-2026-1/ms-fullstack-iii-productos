@@ -7,14 +7,21 @@ import lombok.Data;
 
 @Data
 public class ProductosDTO {
-    @NotBlank(message = "El nombre no puede estar vacio")
+    private Integer id;
+
+    @NotBlank(message = "El nombre es obligatorio")
     private String nombre;
 
-    @NotNull(message = "El Precio es Obligatorio")
-    @Min(value = 1, message = "El precio debe ser mayor a 0")
+    @NotNull(message = "El precio es obligatorio")
+    @Min(value = 0, message = "El precio debe ser mayor o igual a 0")
     private Integer precio;
 
-    @NotNull(message = "La Cantidad es Obligatoria")
-    @Min(value = 0, message = "La cantidad no debe ser negativa")
+    @NotNull(message = "La cantidad es obligatoria")
+    @Min(value = 0, message = "La cantidad debe ser mayor o igual a 0")
     private Integer cantidad;
+
+    @NotBlank(message = "El código es obligatorio")
+    private String codigo;
 }
+
+
