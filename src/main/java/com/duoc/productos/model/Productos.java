@@ -25,4 +25,7 @@ public class Productos {
     @Column(nullable = false)
     private Integer cantidad;
 
+    @Column(nullable = false, unique = true)
+    private String codigo;
+
 }
