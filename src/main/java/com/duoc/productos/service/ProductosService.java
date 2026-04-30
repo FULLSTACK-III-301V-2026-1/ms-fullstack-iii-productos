@@ -1,15 +1,15 @@
 package com.duoc.productos.service;
 
-import java.util.List;
-
+import com.duoc.productos.model.Productos;
+import com.duoc.productos.repository.ProductoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.duoc.productos.model.Productos;
-import com.duoc.productos.repository.ProductoRepository;
+import java.util.List;
 
 @Service
 public class ProductosService {
+
     @Autowired
 
     private ProductoRepository productoRepository;
@@ -32,4 +32,10 @@ public class ProductosService {
         }
         return false;
     }
+
+    // Guardar nuevo producto
+    public Productos guardar(Productos productos) {
+        return productoRepository.save(productos);
+    }
+
 }
